@@ -1,54 +1,68 @@
-# TypeScript Next.js example
+# web-tool
 
-This is a really simple project that show the usage of Next.js with TypeScript.
-
-## How to use it?
-
-### Using `create-next-app`
-
-Execute [`create-next-app`](https://github.com/segmentio/create-next-app) with [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) or [npx](https://github.com/zkat/npx#readme) to bootstrap the example:
-
-```bash
-npx create-next-app --example with-typescript with-typescript-app
-# or
-yarn create next-app --example with-typescript with-typescript-app
+## 開発環境
+```
+・react.js + next
+・typescript
+・apollo-graphql
+・redux / redux-saga
+・react-bootstrap
+```
+## 説明
+```
+社内や団体で共通的に必要な各種ツールを
+ネットですぐ使える・見えるようにする。
+```
+## 要件定義：会員管理
+```
+・ログインプロセス
+　→ 会員登録
+　→ 会員ログイン
+・会員情報見る
+　→ 写真・名前・フリガな・内線・email・
+・座席表
+　→ 座席配置図作成
+　→ 座席配置図に基づいた各会員の座席を表示
+　→ 各会員の座席管理
+　→ 座席押下時、会員情報を表示
+・アンケート
+　→ 匿名投稿可
+　→ 投稿機関設定
+　→ いいね
+　→ 結果エキスポート
+```
+## 要件定義：各種ツール
+```
+・文字列変換
+　→ base64
+　→ 臨時パスワード生成（桁数指定・小文字、大文字、数字、記号含む）
+・json parser  
+　→ http://json.parser.online.fr
 ```
 
-### Download manually
-
-Download the example:
-
-```bash
-curl https://codeload.github.com/zeit/next.js/tar.gz/canary | tar -xz --strip=2 next.js-canary/examples/with-typescript
-cd with-typescript
+## Project setup
 ```
-
-Install it and run:
-
-```bash
 npm install
+```
+### Compiles and hot-reloads for development
+```
 npm run dev
-# or
-yarn
-yarn dev
 ```
-
-## The idea behind the example
-
-This example shows how to integrate the TypeScript type system into Next.js. Since TypeScript is supported out of the box with Next.js, all we have to do is to install TypeScript.
-
+### Compiles and minifies for production
 ```
-npm install --save-dev typescript
+npm run build
 ```
-
-To enable TypeScript's features, we install the type declaratons for React and Node.
-
+### Run your tests
 ```
-npm install --save-dev @types/react @types/react-dom @types/node
+npm run test
 ```
-
-When we run `next dev` the next time, Next.js will start looking for any `.ts` or `.tsx` files in our project and builds it. It even automatically creates a `tsconfig.json` file for our project with the recommended settings.
-
-Next.js has built-in TypeScript declarations, so we'll get autocompletion for Next.js' modules straight away.
-
-A `type-check` script is also added to `package.json`, which runs TypeScript's `tsc` CLI in `noEmit` mode to run type-checking separately. You can then include this, for example, in your `test` scripts.
+### Lints and fixes files
+```
+npm run lint
+```
+### Run your unit tests
+```
+npm run test:unit
+```
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).

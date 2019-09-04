@@ -1,22 +1,84 @@
 {
   "name": "react-webtool",
   "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bugs": {
+    "url": "https://github.com/Mmtt85/react-webtool/issues"
+  },
+  "homepage": "https://github.com/Mmtt85/react-webtool#readme",
+  "repository": {
+    "private": true,
+    "type": "git",
+    "url": "git+https://github.com/Mmtt85/react-webtool.git"
+  },
   "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "start": "next start",
+    "start": "parcel src/index.html -p 8080",
+    "build": "parcel build src/index.html",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
+    "lint:fix": "eslint . --ext .ts,.tsx,.js,.jsx --fix",
+    "lint:staged": "lint-staged",
     "type-check": "tsc"
   },
+  "alias": {
+    "src": "./src"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "npm run lint:fix",
+      "git add --force"
+    ],
+    "*.tsx": [
+      "npm run lint:fix",
+      "git add --force"
+    ]
+  },
+  "pre-commit": "lint:staged",
   "dependencies": {
-    "next": "latest",
+    "@fortawesome/fontawesome-svg-core": "^1.2.22",
+    "@fortawesome/free-solid-svg-icons": "^5.10.2",
+    "@fortawesome/react-fontawesome": "^0.1.4",
+    "apollo-boost": "^0.4.4",
+    "apollo-cache-inmemory": "^1.6.3",
+    "apollo-client": "^2.6.4",
+    "apollo-link": "^1.2.12",
+    "apollo-link-context": "^1.0.18",
+    "apollo-link-http": "^1.5.15",
+    "axios": "^0.19.0",
+    "bootstrap": "^4.3.1",
+    "graphql": "^14.5.4",
+    "graphql-tag": "^2.10.1",
+    "immutable": "^4.0.0-rc.12",
+    "postcss-modules": "^1.4.1",
     "react": "^16.9.0",
-    "react-dom": "^16.9.0"
+    "react-apollo": "^3.1.0",
+    "react-apollo-hooks": "^0.5.0",
+    "react-bootstrap": "^1.0.0-beta.12",
+    "react-dom": "^16.9.0",
+    "react-redux": "^7.1.1",
+    "react-router-dom": "^5.0.1",
+    "redux": "^4.0.4",
+    "redux-saga": "^1.0.5"
   },
   "devDependencies": {
+    "@babel/core": "^7.6.0",
     "@types/node": "^11.13.20",
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
-    "typescript": "^3.6.2"
+    "@types/react-redux": "^7.1.2",
+    "@typescript-eslint/eslint-plugin": "^2.1.0",
+    "@typescript-eslint/parser": "^2.1.0",
+    "eslint": "^6.3.0",
+    "eslint-config-prettier": "^6.2.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^2.0.1",
+    "lint-staged": "^9.2.5",
+    "pre-commit": "^1.2.2",
+    "prettier": "^1.18.2",
+    "sass": "^1.22.12",
+    "typescript": "^3.6.3"
   },
   "license": "ISC"
 }
