@@ -2,7 +2,7 @@
 
 ## 開発環境
 ```
-・react.js + next
+・react.js (parcel)
 ・typescript
 ・apollo-graphql
 ・redux / redux-saga
