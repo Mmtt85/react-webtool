@@ -25,6 +25,7 @@ module.exports = {
     "prettier/prettier": "error",
     "arrow-body-style": [2, 'as-needed'],
     "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-explicit-any": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react/jsx-curly-brace-presence": ["error", {
