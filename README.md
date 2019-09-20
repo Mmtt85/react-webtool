@@ -19,7 +19,7 @@
 　→ 会員登録
 　→ 会員ログイン
 ・会員情報見る
-　→ 写真・名前・フリガな・内線・email・
+　→ 写真・名前・フリガな・内線・email
 ・座席表
 　→ 座席配置図作成
 　→ 座席配置図に基づいた各会員の座席を表示
@@ -64,5 +64,3 @@ npm run lint
 ```
 npm run test:unit
 ```
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
