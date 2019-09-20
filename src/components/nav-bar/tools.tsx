@@ -1,23 +1,22 @@
 import * as React from 'react';
-import history from 'history';
-import { NavDropdown } from 'react-bootstrap';
+import * as BS from 'react-bootstrap';
 
-const Tools = () => {
+import history from 'src/configurations/history';
+
+export default function Tools() {
   const gotoPage = React.useCallback(path => history.push(path), []);
 
   return (
-    <NavDropdown title="Tools" id="basic-nav-dropdown">
-      <NavDropdown.Item onClick={() => gotoPage('/tools/base64')}>
+    <BS.NavDropdown title="Tools" id="basic-nav-dropdown">
+      <BS.NavDropdown.Item onClick={() => gotoPage('/tools/base64')}>
         <span>Base64</span>
-      </NavDropdown.Item>
-      <NavDropdown.Item onClick={() => gotoPage('/tools/json-parser')}>
+      </BS.NavDropdown.Item>
+      <BS.NavDropdown.Item onClick={() => gotoPage('/tools/json-parser')}>
         <span>JsonParser</span>
-      </NavDropdown.Item>
-      <NavDropdown.Item onClick={() => gotoPage('/tools/make-password')}>
+      </BS.NavDropdown.Item>
+      <BS.NavDropdown.Item onClick={() => gotoPage('/tools/make-password')}>
         <span>MakePassword</span>
-      </NavDropdown.Item>
-    </NavDropdown>
+      </BS.NavDropdown.Item>
+    </BS.NavDropdown>
   );
-};
-
-export default Tools;
+}

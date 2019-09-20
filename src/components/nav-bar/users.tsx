@@ -1,23 +1,22 @@
 import * as React from 'react';
-import { NavDropdown } from 'react-bootstrap';
-import history from 'history';
+import * as BS from 'react-bootstrap';
 
-const Users = () => {
+import history from 'src/configurations/history';
+
+export default function Users() {
   const gotoPage = React.useCallback(path => history.push(path), []);
 
   return (
-    <NavDropdown title="Users" id="basic-nav-dropdown">
-      <NavDropdown.Item onClick={() => gotoPage('/members/search')}>
+    <BS.NavDropdown title="Users" id="basic-nav-dropdown">
+      <BS.NavDropdown.Item onClick={() => gotoPage('/members/search')}>
         <span>search</span>
-      </NavDropdown.Item>
-      <NavDropdown.Item onClick={() => gotoPage('/members/seat')}>
+      </BS.NavDropdown.Item>
+      <BS.NavDropdown.Item onClick={() => gotoPage('/members/seat')}>
         <span>seat</span>
-      </NavDropdown.Item>
-      <NavDropdown.Item onClick={() => gotoPage('/members/survey')}>
+      </BS.NavDropdown.Item>
+      <BS.NavDropdown.Item onClick={() => gotoPage('/members/survey')}>
         <span>survey</span>
-      </NavDropdown.Item>
-    </NavDropdown>
+      </BS.NavDropdown.Item>
+    </BS.NavDropdown>
   );
-};
-
-export default Users;
+}

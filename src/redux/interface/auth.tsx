@@ -1,9 +1,12 @@
 import * as Types from 'src/constants/redux-type';
+import { Record } from 'immutable';
 import { CommonActions } from './index';
 
-export interface AuthState {
+interface AuthState {
   id: string | null;
 }
+
+export interface RecAuthState extends Record<AuthState>, AuthState {}
 
 interface LoginAction {
   type: typeof Types.LOGIN;
@@ -13,4 +16,5 @@ interface LoginAction {
 interface LogoutAction {
   type: typeof Types.LOGOUT;
 }
+
 export type AuthActions = CommonActions | LoginAction | LogoutAction;

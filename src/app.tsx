@@ -4,25 +4,24 @@ import { ApolloProvider as ApolloHooksProvider } from 'react-apollo-hooks';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './app.scss';
 
-import apolloClient from './configuration/apollo';
-import reduxStore from './configuration/redux-store';
-import history from './configuration/history';
+import apolloClient from 'src/configurations/apollo';
+import reduxStore from 'src/configurations/redux-store';
+import history from 'src/configurations/history';
 
-import NavBar from './components/nav-bar';
-import Body from './components/body';
+import Index from 'src/components';
 
-const App = () => (
-  <Provider store={reduxStore}>
-    <Router history={history}>
-      <ApolloProvider client={apolloClient}>
-        <ApolloHooksProvider client={apolloClient}>
-          <NavBar />
-          <Body />
-        </ApolloHooksProvider>
-      </ApolloProvider>
-    </Router>
-  </Provider>
-);
-
-export default App;
+export default function App() {
+  return (
+    <Provider store={reduxStore}>
+      <Router history={history}>
+        <ApolloProvider client={apolloClient}>
+          <ApolloHooksProvider client={apolloClient}>
+            <Index />
+          </ApolloHooksProvider>
+        </ApolloProvider>
+      </Router>
+    </Provider>
+  );
+}

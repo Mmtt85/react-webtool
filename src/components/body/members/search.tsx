@@ -1,5 +1,5 @@
 import * as React from 'react';
 
-const Search = () => <div>member search</div>;
-
-export default Search;
+export default function Search() {
+  return <div>member search</div>;
+}

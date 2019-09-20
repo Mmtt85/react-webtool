@@ -1,5 +1,5 @@
 import * as React from 'react';
 
-const MakePassword = () => <div>make password</div>;
-
-export default MakePassword;
+export default function MakePassword() {
+  return <div>make password</div>;
+}

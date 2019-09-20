@@ -1,5 +1,5 @@
 import * as React from 'react';
 
-const Base64 = () => <div>base64</div>;
-
-export default Base64;
+export default function Base64() {
+  return <div>base64</div>;
+}

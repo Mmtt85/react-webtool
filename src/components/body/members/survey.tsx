@@ -1,5 +1,5 @@
 import * as React from 'react';
 
-const Survey = () => <div>survey</div>;
-
-export default Survey;
+export default function Survey() {
+  return <div>survey</div>;
+}
