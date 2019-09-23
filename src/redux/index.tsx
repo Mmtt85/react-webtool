@@ -6,4 +6,5 @@ export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
 
 // styles
-export const ROOT_FILTER = 'ROOT_FILTER';
+export const ROOT_BLUR = 'ROOT_BLUR';
+export const ROOT_TITLE = 'ROOT_TITLE';

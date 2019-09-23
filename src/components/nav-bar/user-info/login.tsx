@@ -17,6 +17,7 @@ export default function Login({ onClose }: Props) {
   const [id, setId] = React.useState('');
   const [password, setPassword] = React.useState('');
   const accountRef = React.useRef();
+  const { addToast } = WebTool.useToastMsg();
   WebTool.useAutoFocus(accountRef);
 
   const onLogin = React.useCallback(() => {
@@ -29,9 +30,22 @@ export default function Login({ onClose }: Props) {
           'ナルの個人情報ですナルの個人情報ですナルの個人情報です\nナルの個人情報です',
       });
       reduxDispatch(login(member));
+      addToast({
+        body: (
+          <>
+            <BS.Spinner
+              size="sm"
+              animation="grow"
+              variant="success"
+              className="mr-1"
+            />
+            <span>login success</span>
+          </>
+        ),
+      });
       onClose();
     }
-  }, [id, onClose, password, reduxDispatch]);
+  }, [addToast, id, onClose, password, reduxDispatch]);
 
   return (
     <BS.Form className="m-0">

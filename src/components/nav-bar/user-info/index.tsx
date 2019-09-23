@@ -33,7 +33,19 @@ export default function Index() {
   const onLogin = React.useCallback(() => setOpenLoginWindow(true), []);
   const onLogout = React.useCallback(() => {
     reduxDispatch(logout());
-    addToast({ title: 'logout', body: 'success' });
+    addToast({
+      body: (
+        <>
+          <BS.Spinner
+            size="sm"
+            animation="grow"
+            variant="secondary"
+            className="mr-1"
+          />
+          <span>logout</span>
+        </>
+      ),
+    });
   }, [addToast, reduxDispatch]);
 
   return (
@@ -48,11 +60,11 @@ export default function Index() {
         >
           <BS.Dropdown.Item onClick={onAccountInfo}>
             <FontAwesomeIcon icon={faUserCircle} />
-            <span className="ml-1">AccountInfo</span>
+            <span className="ml-2">My Account</span>
           </BS.Dropdown.Item>
           <BS.Dropdown.Item onClick={onLogout}>
             <FontAwesomeIcon icon={faSignOutAlt} />
-            <span className="ml-1">Logout</span>
+            <span className="ml-2">Logout</span>
           </BS.Dropdown.Item>
         </BS.DropdownButton>
       ) : (

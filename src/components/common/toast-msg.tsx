@@ -13,18 +13,20 @@ export default function ToastMsg() {
 
   return (
     <StyledToastWrapper>
-      {toastList.map(toast => (
+      {toastList.map(({ id, title, body }) => (
         <BS.Toast
-          key={toast.id}
-          onClose={() => removeToast(toast.id)}
-          show={toastIdList.includes(toast.id)}
+          key={id}
+          onClose={() => removeToast(id)}
+          show={toastIdList.includes(id)}
           delay={2000}
           autohide
         >
-          <BS.Toast.Header>
-            <strong className="mr-auto">{toast.title}</strong>
-          </BS.Toast.Header>
-          <BS.Toast.Body>{toast.body}</BS.Toast.Body>
+          {title && (
+            <BS.Toast.Header>
+              <strong className="mr-auto">{title}</strong>
+            </BS.Toast.Header>
+          )}
+          <BS.Toast.Body>{body}</BS.Toast.Body>
         </BS.Toast>
       ))}
     </StyledToastWrapper>

@@ -6,7 +6,7 @@ import { HooksAction } from 'src/models/hooks/type';
 
 export interface Toast {
   id?: number;
-  title?: string;
+  title?: React.ReactNode;
   body: React.ReactNode;
 }
 
