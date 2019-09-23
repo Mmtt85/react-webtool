@@ -12,7 +12,7 @@ import { selectRootFilter } from 'src/redux/selector';
 import NavBar from 'src/components/nav-bar';
 import Body from 'src/components/body';
 import ToastMsg from 'src/components/common/toast-msg';
-import { loginAction } from '../redux/action/auth';
+import { login } from 'src/redux/action/auth';
 
 export default function Index() {
   const reduxDispatch = Redux.useDispatch();
@@ -20,7 +20,7 @@ export default function Index() {
 
   React.useEffect(() => {
     if (session.isLogin()) {
-      reduxDispatch(loginAction(session.getAccount()));
+      reduxDispatch(login(session.getAccount()));
     }
   }, [reduxDispatch]);
 

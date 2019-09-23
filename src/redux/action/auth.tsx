@@ -1,16 +1,9 @@
-import { RecMember } from 'src/models/records/member';
+import { createActions } from 'redux-actions';
 
 import * as Types from 'src/redux';
+import { RecMember } from 'src/models/records/member';
 
-export function loginAction(payload: RecMember) {
-  return {
-    type: Types.LOGIN,
-    payload,
-  };
-}
-
-export function logoutAction() {
-  return {
-    type: Types.LOGOUT,
-  };
-}
+export const { login, logout } = createActions({
+  [Types.LOGIN]: (payload: RecMember) => payload,
+  [Types.LOGOUT]: () => null,
+});

@@ -1,21 +1,20 @@
 import { Record } from 'immutable';
+import { handleActions } from 'redux-actions';
 
 import * as Types from 'src/redux';
-import { RecStylesState, StylesActions } from 'src/redux/interface/styles';
+import { RecStylesState, RootFilterAction } from 'src/redux/interface/styles';
 
-const initState = Record({
+const defaultState = Record({
   root: { filter: false },
 })();
 
-export default function stylesReducer(
-  state: RecStylesState = initState,
-  action: StylesActions,
-) {
-  switch (action.type) {
-    case Types.ROOT_FILTER:
-      return state.setIn(['root', 'filter'], action.payload);
-    case Types.RESET:
-    default:
-      return state;
-  }
-}
+const stylesReducer = handleActions(
+  {
+    [Types.ROOT_FILTER]: (state: RecStylesState, action: RootFilterAction) =>
+      state.setIn(['root', 'filter'], action.payload),
+    [Types.RESET_REDUX]: (state: RecStylesState) => state,
+  },
+  defaultState,
+);
+
+export default stylesReducer;

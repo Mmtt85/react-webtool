@@ -13,7 +13,7 @@ import * as session from 'src/utils/session';
 import * as WebTool from 'src/models/hooks';
 
 import { selectLoginAccount } from 'src/redux/selector';
-import { logoutAction } from 'src/redux/action/auth';
+import { logout } from 'src/redux/action/auth';
 
 import Modal from 'src/components/common/modal';
 import MemberCard from 'src/components/common/member';
@@ -34,8 +34,7 @@ export default function Index() {
   );
   const onLogin = React.useCallback(() => setOpenLoginWindow(true), []);
   const onLogout = React.useCallback(() => {
-    session.logout();
-    reduxDispatch(logoutAction());
+    reduxDispatch(logout());
     addToast({ title: 'logout', body: 'success' });
   }, [addToast, reduxDispatch]);
 

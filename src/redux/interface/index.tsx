@@ -1,7 +1,5 @@
 import * as Types from 'src/redux';
 
-interface ResetAction {
+export interface ResetAction {
   type: typeof Types.RESET;
 }
-
-export type CommonActions = ResetAction;

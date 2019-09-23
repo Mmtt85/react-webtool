@@ -1,5 +1,5 @@
 // common
-export const RESET = 'RESET';
+export const RESET_REDUX = 'RESET_REDUX';
 
 // auth
 export const LOGIN = 'LOGIN';

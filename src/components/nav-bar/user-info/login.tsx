@@ -9,7 +9,7 @@ import * as session from 'src/utils/session';
 import * as WebTool from 'src/models/hooks';
 import { makeMember } from 'src/models/records/member';
 
-import { loginAction } from 'src/redux/action/auth';
+import { login } from 'src/redux/action/auth';
 
 interface Props {
   onClose: () => void;
@@ -30,8 +30,7 @@ export default function Login({ onClose }: Props) {
         etc:
           'ナルの個人情報ですナルの個人情報ですナルの個人情報です\nナルの個人情報です',
       });
-      session.login(member);
-      reduxDispatch(loginAction(member));
+      reduxDispatch(login(member));
       onClose();
     }
   }, [id, onClose, password, reduxDispatch]);

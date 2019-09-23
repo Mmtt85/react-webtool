@@ -3,7 +3,7 @@ import * as Redux from 'react-redux';
 import * as BS from 'react-bootstrap';
 import ReactDOM from 'react-dom';
 
-import { rootFilterAction } from 'src/redux/action/styles';
+import { rootFilter } from 'src/redux/action/styles';
 
 const modalRoot = document.getElementById('portal-root');
 
@@ -95,9 +95,9 @@ export default function Modal({
     style.top = '0';
 
     modalRoot.appendChild(elCurrent);
-    reduxDispatch(rootFilterAction(true));
+    reduxDispatch(rootFilter(true));
     return () => {
-      reduxDispatch(rootFilterAction(false));
+      reduxDispatch(rootFilter(false));
       modalRoot.removeChild(elCurrent);
     };
   }, [reduxDispatch]);

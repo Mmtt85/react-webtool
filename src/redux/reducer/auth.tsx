@@ -1,23 +1,21 @@
 import { Record } from 'immutable';
+import { handleActions } from 'redux-actions';
 
 import * as Types from 'src/redux';
-import { AuthActions, RecAuthState } from 'src/redux/interface/auth';
+import { LoginAction, RecAuthState } from 'src/redux/interface/auth';
 
-const initState = Record({
+const defaultState = Record({
   account: null,
 })();
 
-export default function authReducer(
-  state: RecAuthState = initState,
-  action: AuthActions,
-) {
-  switch (action.type) {
-    case Types.LOGIN:
-      return state.setIn(['account'], action.payload);
-    case Types.LOGOUT:
-      return state.setIn(['account'], null);
-    case Types.RESET:
-    default:
-      return state;
-  }
-}
+const authReducer = handleActions(
+  {
+    [Types.LOGIN]: (state: RecAuthState, action: LoginAction) =>
+      state.setIn(['account'], action.payload),
+    [Types.LOGOUT]: (state: RecAuthState) => state.setIn(['account'], null),
+    [Types.RESET_REDUX]: (state: RecAuthState) => state,
+  },
+  defaultState,
+);
+
+export default authReducer;

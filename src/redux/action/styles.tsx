@@ -1,8 +1,6 @@
 import * as Types from 'src/redux';
+import { createActions } from 'redux-actions';
 
-export function rootFilterAction(payload: boolean) {
-  return {
-    type: Types.ROOT_FILTER,
-    payload,
-  };
-}
+export const { rootFilter } = createActions({
+  [Types.ROOT_FILTER]: (payload: boolean) => payload,
+});
