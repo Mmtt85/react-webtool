@@ -1,3 +1,4 @@
+import Favicon from 'react-favicon';
 import * as React from 'react';
 import * as Redux from 'react-redux';
 
@@ -26,6 +27,7 @@ export default function Index() {
 
   return (
     <StyledRoot isBlur={isBlur}>
+      <Favicon url="http://oflisback.github.io/react-favicon/public/img/github.ico" />
       <ToastMsgProvider>
         <NavBar />
         <Body />
