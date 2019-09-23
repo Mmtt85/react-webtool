@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { combineReducers } from 'redux-immutable';
 import createSagaMiddleware from 'redux-saga';
 import { fromJS, Record } from 'immutable';
@@ -8,6 +8,7 @@ import { RecAuthState } from 'src/redux/interface/auth';
 import { RecStylesState } from 'src/redux/interface/styles';
 import auth from 'src/redux/reducer/auth';
 import styles from 'src/redux/reducer/styles';
+import authSaga from 'src/redux/saga/auth';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -29,6 +30,6 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(sagaMiddleware)),
 );
 
-store['runSaga'] = saga => sagaMiddleware.run(saga);
+sagaMiddleware.run(authSaga);
 
 export default store;

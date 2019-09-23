@@ -8,8 +8,6 @@ import {
   faUserCircle,
 } from '@fortawesome/free-solid-svg-icons';
 
-import * as session from 'src/utils/session';
-
 import * as WebTool from 'src/models/hooks';
 
 import { selectLoginAccount } from 'src/redux/selector';

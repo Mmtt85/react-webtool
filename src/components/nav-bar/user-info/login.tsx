@@ -4,8 +4,6 @@ import * as Redux from 'react-redux';
 
 import { StyledButtonsWrapper } from 'src/static/styles/nav-bar/user-info/login';
 
-import * as session from 'src/utils/session';
-
 import * as WebTool from 'src/models/hooks';
 import { makeMember } from 'src/models/records/member';
 

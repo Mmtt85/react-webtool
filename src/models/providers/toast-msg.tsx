@@ -2,7 +2,7 @@ import * as React from 'react';
 import { List } from 'immutable';
 import _ from 'lodash';
 
-import { Action } from 'src/models/hooks/type';
+import { HooksAction } from 'src/models/hooks/type';
 
 export interface Toast {
   id?: number;
@@ -20,7 +20,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-function reducer(state: State, action: Action) {
+function reducer(state: State, action: HooksAction) {
   switch (action.type) {
     case 'addToast':
       const id =
