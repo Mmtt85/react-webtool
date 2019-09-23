@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as BS from 'react-bootstrap';
 
-import { StyledToastWrapper } from 'src/styles/common/toast';
+import { StyledToastWrapper } from 'src/static/styles/common/toast';
 
-import * as WebTool from 'src/hooks';
+import * as WebTool from 'src/models/hooks';
 
 export default function ToastMsg() {
   const { toastList, removeToast } = WebTool.useToastMsg();

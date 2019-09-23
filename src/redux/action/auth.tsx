@@ -1,6 +1,8 @@
-import * as Types from 'src/constants/redux-type';
+import { RecMember } from 'src/models/records/member';
 
-export function loginAction(payload: string) {
+import * as Types from 'src/redux';
+
+export function loginAction(payload: RecMember) {
   return {
     type: Types.LOGIN,
     payload,

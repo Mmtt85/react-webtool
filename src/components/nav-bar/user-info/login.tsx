@@ -1,28 +1,40 @@
 import * as React from 'react';
 import * as BS from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
+import * as Redux from 'react-redux';
 
-import { StyledButtonsWrapper } from 'src/styles/nav-bar/user-info/login';
+import { StyledButtonsWrapper } from 'src/static/styles/nav-bar/user-info/login';
+
+import * as session from 'src/utils/session';
+
+import * as WebTool from 'src/models/hooks';
+import { makeMember } from 'src/models/records/member';
 
 import { loginAction } from 'src/redux/action/auth';
-import * as WT from 'src/hooks';
 
 interface Props {
   onClose: () => void;
 }
 export default function Login({ onClose }: Props) {
-  const reduxDispatch = useDispatch();
-  const [account, setAccount] = React.useState('');
+  const reduxDispatch = Redux.useDispatch();
+  const [id, setId] = React.useState('');
   const [password, setPassword] = React.useState('');
   const accountRef = React.useRef();
-  WT.useAutoFocus(accountRef);
+  WebTool.useAutoFocus(accountRef);
 
   const onLogin = React.useCallback(() => {
-    if (!!account && !!password) {
-      reduxDispatch(loginAction(account));
+    if (!!id && !!password) {
+      const member = makeMember({
+        id,
+        name: 'NARU',
+        email: 'morolty85@gmail.com',
+        etc:
+          'ナルの個人情報ですナルの個人情報ですナルの個人情報です\nナルの個人情報です',
+      });
+      session.login(member);
+      reduxDispatch(loginAction(member));
       onClose();
     }
-  }, [account, onClose, password, reduxDispatch]);
+  }, [id, onClose, password, reduxDispatch]);
 
   return (
     <BS.Form className="m-0">
@@ -33,7 +45,7 @@ export default function Login({ onClose }: Props) {
           size="sm"
           placeholder="Enter Account"
           ref={accountRef}
-          onChange={({ target }) => setAccount(target.value)}
+          onChange={({ target }) => setId(target.value)}
           onKeyDown={e => e.key === 'Enter' && onLogin()}
         />
       </BS.Form.Group>

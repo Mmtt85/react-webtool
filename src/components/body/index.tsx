@@ -1,4 +1,5 @@
 import * as React from 'react';
+import cx from 'classnames';
 import { Route } from 'react-router-dom';
 
 import * as Tools from './tools';
@@ -7,7 +8,7 @@ import Home from './home';
 
 export default function Body() {
   return (
-    <div>
+    <div className={cx('p-2')}>
       <Route path="/" exact component={Home} />
       <Route path="/tools/base64" component={Tools.Base64} />
       <Route path="/tools/json-parser" component={Tools.JsonParser} />

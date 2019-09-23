@@ -1,6 +1,6 @@
 import { Record } from 'immutable';
 
-import * as Types from 'src/constants/redux-type';
+import * as Types from 'src/redux';
 import { RecStylesState, StylesActions } from 'src/redux/interface/styles';
 
 const initState = Record({

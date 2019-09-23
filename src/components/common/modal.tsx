@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as Redux from 'react-redux';
-import ReactDOM from 'react-dom';
 import * as BS from 'react-bootstrap';
+import ReactDOM from 'react-dom';
 
 import { rootFilterAction } from 'src/redux/action/styles';
 
@@ -93,11 +93,12 @@ export default function Modal({
     style.height = '100%';
     style.left = '0';
     style.top = '0';
+
     modalRoot.appendChild(elCurrent);
     reduxDispatch(rootFilterAction(true));
     return () => {
-      modalRoot.removeChild(elCurrent);
       reduxDispatch(rootFilterAction(false));
+      modalRoot.removeChild(elCurrent);
     };
   }, [reduxDispatch]);
 

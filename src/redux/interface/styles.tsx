@@ -1,6 +1,7 @@
-import * as Types from 'src/constants/redux-type';
 import { Record } from 'immutable';
-import { CommonActions } from './index';
+
+import * as Types from 'src/redux';
+import { CommonActions } from '.';
 
 interface StylesState {
   root: { filter: boolean };

@@ -1,4 +1,4 @@
-import * as Types from 'src/constants/redux-type';
+import * as Types from 'src/redux';
 
 export function rootFilterAction(payload: boolean) {
   return {

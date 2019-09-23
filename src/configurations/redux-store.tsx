@@ -2,15 +2,14 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { combineReducers } from 'redux-immutable';
 import createSagaMiddleware from 'redux-saga';
 import { fromJS, Record } from 'immutable';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 import { RecAuthState } from 'src/redux/interface/auth';
 import { RecStylesState } from 'src/redux/interface/styles';
 import auth from 'src/redux/reducer/auth';
 import styles from 'src/redux/reducer/styles';
 
-const middleWares = [createSagaMiddleware()];
-const appliedMiddleWares = applyMiddleware(...middleWares);
-const composedEnhancers = compose(appliedMiddleWares);
+const sagaMiddleware = createSagaMiddleware();
 
 interface RootState {
   auth: RecAuthState;
@@ -24,4 +23,12 @@ const combine = combineReducers<RootState>({
   styles,
 });
 
-export default createStore(combine, fromJS({}), composedEnhancers);
+const store = createStore(
+  combine,
+  fromJS({}),
+  composeWithDevTools(applyMiddleware(sagaMiddleware)),
+);
+
+store['runSaga'] = saga => sagaMiddleware.run(saga);
+
+export default store;

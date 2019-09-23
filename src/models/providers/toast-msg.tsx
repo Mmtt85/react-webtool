@@ -2,7 +2,7 @@ import * as React from 'react';
 import { List } from 'immutable';
 import _ from 'lodash';
 
-import { Action } from 'src/hooks/type';
+import { Action } from 'src/models/hooks/type';
 
 export interface Toast {
   id?: number;
