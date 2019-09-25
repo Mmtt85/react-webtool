@@ -43,46 +43,28 @@ export default function Modal({
     onHide();
   }, [footer, onHide]);
 
-  const modalHeader = React.useCallback(
-    () => (
-      <BS.Modal.Header className="pt-2 pb-2" closeButton onHide={onHide}>
-        {renderHeader}
-      </BS.Modal.Header>
-    ),
-    [onHide, renderHeader],
-  );
-
-  const modalBody = React.useCallback(
-    () => <BS.Modal.Body>{renderBody}</BS.Modal.Body>,
-    [renderBody],
-  );
-
-  const modalFooter = React.useCallback(() => {
-    if (footer) {
-      return (
-        <BS.Modal.Footer>
-          {footer.type !== 'closeOnly' && (
-            <BS.Button variant="primary" size="sm" onClick={onOkHide}>
-              {(footer.ok && footer.ok.label) || 'Ok'}
-            </BS.Button>
-          )}
-          <BS.Button variant="secondary" size="sm" onClick={onCloseHide}>
-            {(footer.close && footer.close.label) || 'Close'}
-          </BS.Button>
-        </BS.Modal.Footer>
-      );
-    }
-  }, [footer, onCloseHide, onOkHide]);
-
-  const renderModal = React.useCallback(
+  const renderModal = React.useMemo(
     () => (
       <BS.Modal.Dialog>
-        {modalHeader()}
-        {modalBody()}
-        {modalFooter()}
+        <BS.Modal.Header className="pt-2 pb-2" closeButton onHide={onHide}>
+          {renderHeader}
+        </BS.Modal.Header>
+        <BS.Modal.Body>{renderBody}</BS.Modal.Body>
+        {footer && (
+          <BS.Modal.Footer>
+            {footer.type !== 'closeOnly' && (
+              <BS.Button variant="primary" size="sm" onClick={onOkHide}>
+                {(footer.ok && footer.ok.label) || 'Ok'}
+              </BS.Button>
+            )}
+            <BS.Button variant="secondary" size="sm" onClick={onCloseHide}>
+              {(footer.close && footer.close.label) || 'Close'}
+            </BS.Button>
+          </BS.Modal.Footer>
+        )}
       </BS.Modal.Dialog>
     ),
-    [modalBody, modalFooter, modalHeader],
+    [footer, onCloseHide, onHide, onOkHide, renderBody, renderHeader],
   );
 
   React.useEffect(() => {
@@ -102,5 +84,5 @@ export default function Modal({
     };
   }, [reduxDispatch]);
 
-  return ReactDOM.createPortal(renderModal(), el.current);
+  return ReactDOM.createPortal(renderModal, el.current);
 }

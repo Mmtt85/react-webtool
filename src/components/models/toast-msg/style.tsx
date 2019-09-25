@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledToastWrapper = styled.div`
+export const StyledToastMsg = styled.div`
   position: absolute;
   width: 40%;
   margin-left: auto;

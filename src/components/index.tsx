@@ -1,18 +1,18 @@
 import Favicon from 'react-favicon';
 import * as React from 'react';
 import * as Redux from 'react-redux';
-import { StyledRoot } from 'src/static/styles';
+import styled from 'styled-components';
 
-import * as session from 'src/utils/session';
+import Session from 'src/utils/session';
 
-import { ToastMsgProvider } from 'src/models/providers/toast-msg';
+import { ToastMsgProvider } from 'src/providers/toast-msg';
 
 import { selectRoot } from 'src/redux/selector';
 import { login } from 'src/redux/action/auth';
 
 import NavBar from 'src/components/nav-bar';
 import Body from 'src/components/body';
-import ToastMsg from 'src/components/common/toast-msg';
+import ToastMsg from 'src/components/models/toast-msg';
 
 export default function Index() {
   const reduxDispatch = Redux.useDispatch();
@@ -23,8 +23,8 @@ export default function Index() {
   }, [title]);
 
   React.useEffect(() => {
-    if (session.isLogin()) {
-      reduxDispatch(login(session.getAccount()));
+    if (Session.isLogin()) {
+      reduxDispatch(login(Session.getAccount()));
     }
   }, [reduxDispatch]);
 
@@ -39,3 +39,8 @@ export default function Index() {
     </StyledRoot>
   );
 }
+
+const StyledRoot = styled.div`
+  height: 100%;
+  filter: ${({ isBlur }) => (isBlur ? `blur(2px)` : '')}};
+`;

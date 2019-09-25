@@ -1,13 +1,14 @@
 import * as React from 'react';
 import * as BS from 'react-bootstrap';
 import * as Redux from 'react-redux';
+import styled from 'styled-components';
 
-import { StyledButtonsWrapper } from 'src/static/styles/nav-bar/user-info/login';
-
-import * as WebTool from 'src/models/hooks';
-import { makeMember } from 'src/models/records/member';
+import * as WT from 'src/hooks';
+import { MemberCardModel } from 'src/components/models/member-card/interface';
 
 import { login } from 'src/redux/action/auth';
+
+import deplicatedNaruImage from 'src/static/images/deplicated_naru_image.png';
 
 interface Props {
   onClose: () => void;
@@ -17,15 +18,16 @@ export default function Login({ onClose }: Props) {
   const [id, setId] = React.useState('');
   const [password, setPassword] = React.useState('');
   const accountRef = React.useRef();
-  const { addToast } = WebTool.useToastMsg();
-  WebTool.useAutoFocus(accountRef);
+  const { addToast } = WT.useToastMsg();
+  WT.useAutoFocus(accountRef);
 
   const onLogin = React.useCallback(() => {
     if (!!id && !!password) {
-      const member = makeMember({
+      const member = new MemberCardModel({
         id,
         name: 'NARU',
         email: 'morolty85@gmail.com',
+        image: deplicatedNaruImage,
         etc:
           'ナルの個人情報ですナルの個人情報ですナルの個人情報です\nナルの個人情報です',
       });
@@ -95,3 +97,7 @@ export default function Login({ onClose }: Props) {
     </BS.Form>
   );
 }
+
+const StyledButtonsWrapper = styled.div`
+  text-align: right;
+`;

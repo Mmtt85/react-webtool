@@ -2,7 +2,7 @@ import { takeLatest, all, put, call } from 'redux-saga/effects';
 import history from 'src/configurations/history';
 
 import * as Types from 'src/redux';
-import * as session from 'src/utils/session';
+import Session from 'src/utils/session';
 import { resetRedux } from 'src/redux/action';
 import { LoginAction } from 'src/redux/interface/auth';
 
@@ -11,7 +11,7 @@ export function* logoutSaga() {
     yield all([
       call(() => history.push('/')),
       put(resetRedux()),
-      call(session.logout),
+      call(Session.logout),
     ]);
   } catch (e) {
     console.log(e);
@@ -20,7 +20,7 @@ export function* logoutSaga() {
 
 export function* loginSaga(action: LoginAction) {
   try {
-    yield call(() => session.login(action.payload));
+    yield call(() => Session.login(action.payload));
   } catch (e) {
     console.log(e);
   }

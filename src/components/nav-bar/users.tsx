@@ -1,10 +1,10 @@
 import * as React from 'react';
 import * as BS from 'react-bootstrap';
 
-import history from 'src/configurations/history';
+import * as WT from 'src/hooks';
 
 export default function Users() {
-  const gotoPage = React.useCallback(path => history.push(path), []);
+  const { gotoPage } = WT.useHistory();
 
   return (
     <BS.NavDropdown title="Users" id="basic-nav-dropdown">

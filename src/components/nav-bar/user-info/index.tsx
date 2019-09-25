@@ -8,23 +8,23 @@ import {
   faUserCircle,
 } from '@fortawesome/free-solid-svg-icons';
 
-import * as WebTool from 'src/models/hooks';
+import * as WT from 'src/hooks';
 
 import { selectLoginAccount } from 'src/redux/selector';
 import { logout } from 'src/redux/action/auth';
 
 import Modal from 'src/components/common/modal';
-import MemberCard from 'src/components/common/member';
+import MemberCard from 'src/components/models/member-card';
 import Login from './login';
 
 export default function Index() {
   const reduxDispatch = Redux.useDispatch();
   const loginAccount = Redux.useSelector(selectLoginAccount);
-  const { addToast } = WebTool.useToastMsg();
-  const [openLoginWindow, setOpenLoginWindow] = React.useState(false);
-  const [openAccountInfoWindow, setOpenAccountInfoWindow] = React.useState(
-    false,
-  );
+  const { addToast } = WT.useToastMsg();
+  const [openLoginWindow, setOpenLoginWindow] = React.useState<boolean>(false);
+  const [openAccountInfoWindow, setOpenAccountInfoWindow] = React.useState<
+    boolean
+  >(false);
 
   const onAccountInfo = React.useCallback(
     () => setOpenAccountInfoWindow(true),

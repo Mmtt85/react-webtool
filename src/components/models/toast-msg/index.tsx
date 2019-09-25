@@ -1,18 +1,20 @@
 import * as React from 'react';
 import * as BS from 'react-bootstrap';
+import { List } from 'immutable';
 
-import { StyledToastWrapper } from 'src/static/styles/common/toast';
+import * as WT from 'src/hooks';
 
-import * as WebTool from 'src/models/hooks';
+import { StyledToastMsg } from './style';
 
 export default function ToastMsg() {
-  const { toastList, removeToast } = WebTool.useToastMsg();
-  const toastIdList = React.useMemo(() => toastList.map(toast => toast.id), [
-    toastList,
-  ]);
+  const { toastList, removeToast } = WT.useToastMsg();
+  const toastIdList = React.useMemo<List<number>>(
+    () => toastList.map(toast => toast.id),
+    [toastList],
+  );
 
   return (
-    <StyledToastWrapper>
+    <StyledToastMsg>
       {toastList.map(({ id, title, body }) => (
         <BS.Toast
           key={id}
@@ -29,6 +31,6 @@ export default function ToastMsg() {
           <BS.Toast.Body>{body}</BS.Toast.Body>
         </BS.Toast>
       ))}
-    </StyledToastWrapper>
+    </StyledToastMsg>
   );
 }

@@ -1,18 +1,21 @@
-import { makeMember, RecMember } from 'src/models/records/member';
+import {
+  MemberCardModel,
+  RecMember,
+} from 'src/components/models/member-card/interface';
 
-export function login(account: RecMember): void {
-  localStorage.setItem('loginAccount', JSON.stringify(account.toJS()));
-}
+export default class Session {
+  static login = (account: RecMember): void => {
+    localStorage.setItem('loginAccount', JSON.stringify(account.toJS()));
+  };
 
-export function logout(): void {
-  localStorage.clear();
-}
+  static logout = (): void => {
+    localStorage.clear();
+  };
 
-export function getAccount(): RecMember | null {
-  const loginAccount = localStorage.getItem('loginAccount');
-  return loginAccount ? makeMember(JSON.parse(loginAccount)) : null;
-}
+  static getAccount = (): RecMember | null => {
+    const loginAccount = localStorage.getItem('loginAccount');
+    return loginAccount ? new MemberCardModel(JSON.parse(loginAccount)) : null;
+  };
 
-export function isLogin(): boolean {
-  return !!localStorage.getItem('loginAccount');
+  static isLogin = (): boolean => !!localStorage.getItem('loginAccount');
 }

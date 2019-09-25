@@ -1,6 +1,6 @@
 import { Record } from 'immutable';
 
-import { RecMember } from 'src/models/records/member';
+import { RecMember } from 'src/components/models/member-card/interface';
 
 import * as Types from 'src/redux';
 
