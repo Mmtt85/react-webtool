@@ -2,6 +2,7 @@
 
 ## 開発環境
 ```
+・node.js (10.16.3)
 ・react.js (parcel)
 ・typescript
 ・apollo-graphql
@@ -63,4 +64,33 @@ npm run lint
 ### Run your unit tests
 ```
 npm run test:unit
+```
+
+
+## Server
+## Environment
+```
+・python (2.7.16)
+・flask
+・flask_restful
+```
+### Project setup
+
+```
+cd serve
+pip install virtualenv
+virtualenv env
+source ./env/Scripts/activate
+※ Windows CMDの場合は
+　call .\env\Scripts\activate
+(env) pip install -r requirements.txt
+```
+### Server run
+```
+flask run
+```
+
+### deactivate the virtual environment
+```
+deactivate
 ```
