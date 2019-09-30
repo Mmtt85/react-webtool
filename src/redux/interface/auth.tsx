@@ -1,8 +1,8 @@
 import { Record } from 'immutable';
 
-import { UserCardModel } from 'src/components/models/user-card/interface';
-
 import * as Types from 'src/redux';
+
+import { UserCardModel } from 'src/components/models/user-card/interface';
 
 interface AuthState {
   account: UserCardModel | null;

@@ -3,7 +3,6 @@ import * as Redux from 'react-redux';
 import _ from 'lodash';
 
 import history from 'src/configurations/history';
-
 import { rootTitle } from 'src/redux/action/styles';
 
 export default function useHistory() {

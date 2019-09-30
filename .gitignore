@@ -2,5 +2,7 @@ node_modules
 .idea
 dist
 .cache
+
 server/venv
+*.sqlite3
 *.pyc

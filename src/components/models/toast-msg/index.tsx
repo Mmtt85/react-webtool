@@ -2,12 +2,12 @@ import * as React from 'react';
 import * as BS from 'react-bootstrap';
 import { List } from 'immutable';
 
-import * as WT from 'src/hooks';
+import * as WebTool from 'src/hooks';
 
 import { StyledToastMsg } from './style';
 
 export default function ToastMsg() {
-  const { toastList, removeToast } = WT.useToastMsg();
+  const { toastList, removeToast } = WebTool.useToastMsg();
   const toastIdList = React.useMemo<List<number>>(
     () => toastList.map(toast => toast.id),
     [toastList],

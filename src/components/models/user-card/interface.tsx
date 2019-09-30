@@ -1,4 +1,4 @@
-import { Record } from 'immutable';
+import { fromJS, Record } from 'immutable';
 
 import { UserId } from 'src/types';
 
@@ -27,6 +27,6 @@ const init: Record.Factory<UserType> = Record({
 // export types and make record objects
 export class UserCardModel extends init implements UserType {
   constructor(props) {
-    super(props);
+    super(fromJS(props));
   }
 }

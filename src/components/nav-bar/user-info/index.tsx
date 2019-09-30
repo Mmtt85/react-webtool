@@ -8,7 +8,7 @@ import {
   faUserCircle,
 } from '@fortawesome/free-solid-svg-icons';
 
-import * as WT from 'src/hooks';
+import * as WebTool from 'src/hooks';
 
 import { selectLoginAccount } from 'src/redux/selector';
 import { logout } from 'src/redux/action/auth';
@@ -20,7 +20,7 @@ import Login from './login';
 export default function Index() {
   const reduxDispatch = Redux.useDispatch();
   const loginAccount = Redux.useSelector(selectLoginAccount);
-  const { addToast } = WT.useToastMsg();
+  const { addToast } = WebTool.useToastMsg();
   const [openLoginWindow, setOpenLoginWindow] = React.useState<boolean>(false);
   const [openAccountInfoWindow, setOpenAccountInfoWindow] = React.useState<
     boolean

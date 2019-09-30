@@ -1,10 +1,10 @@
 import * as React from 'react';
 import * as BS from 'react-bootstrap';
 
-import * as WT from 'src/hooks';
+import * as WebTool from 'src/hooks';
 
 export default function Tools() {
-  const { gotoPage } = WT.useHistory();
+  const { gotoPage } = WebTool.useHistory();
 
   return (
     <BS.NavDropdown title="Tools" id="basic-nav-dropdown">
