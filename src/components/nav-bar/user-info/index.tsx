@@ -14,7 +14,7 @@ import { selectLoginAccount } from 'src/redux/selector';
 import { logout } from 'src/redux/action/auth';
 
 import Modal from 'src/components/common/modal';
-import MemberCard from 'src/components/models/member-card';
+import UserCard from 'src/components/models/user-card';
 import Login from './login';
 
 export default function Index() {
@@ -82,7 +82,7 @@ export default function Index() {
       {openAccountInfoWindow && (
         <Modal
           renderHeader={<span>MyAccount</span>}
-          renderBody={<MemberCard member={loginAccount} />}
+          renderBody={<UserCard user={loginAccount} />}
           onHide={() => setOpenAccountInfoWindow(false)}
         />
       )}

@@ -9,9 +9,9 @@ import { rootTitle } from 'src/redux/action/styles';
 export default function useHistory() {
   const reduxDispatch = Redux.useDispatch();
   const gotoPage = React.useCallback(
-    (path: string) => {
+    (path: string, title?: string) => {
       history.push(path);
-      reduxDispatch(rootTitle(_.last(_.split(path, '/'))));
+      reduxDispatch(rootTitle(title || _.last(_.split(path, '/'))));
     },
     [reduxDispatch],
   );

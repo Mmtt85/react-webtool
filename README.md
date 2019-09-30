@@ -77,12 +77,10 @@ npm run test:unit
 ### Project setup
 
 ```
-cd serve
+cd server
 pip install virtualenv
-virtualenv env
+virtualenv venv
 source ./env/Scripts/activate
-※ Windows CMDの場合は
-　call .\env\Scripts\activate
 (env) pip install -r requirements.txt
 ```
 ### Server run

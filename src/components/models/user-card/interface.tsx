@@ -1,13 +1,14 @@
 import { Record } from 'immutable';
-import { MemberId } from '../../../records';
+
+import { UserId } from 'src/types';
 
 export interface Props {
-  member: RecMember;
+  user: UserCardModel;
 }
 
 // types
-interface MemberType {
-  readonly id: MemberId;
+interface UserType {
+  readonly id: UserId;
   name?: string;
   image?: string;
   email?: string;
@@ -15,7 +16,7 @@ interface MemberType {
 }
 
 // init records
-const init: Record.Factory<MemberType> = Record({
+const init: Record.Factory<UserType> = Record({
   id: '',
   name: '',
   image: '',
@@ -24,8 +25,7 @@ const init: Record.Factory<MemberType> = Record({
 });
 
 // export types and make record objects
-export interface RecMember extends Record<MemberType>, MemberType {}
-export class MemberCardModel extends init implements MemberType {
+export class UserCardModel extends init implements UserType {
   constructor(props) {
     super(props);
   }

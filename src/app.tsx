@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { ApolloProvider } from '@apollo/react-common';
 import { ApolloProvider as ApolloHooksProvider } from 'react-apollo-hooks';
 import { Provider } from 'react-redux';

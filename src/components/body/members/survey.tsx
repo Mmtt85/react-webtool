@@ -4,21 +4,21 @@ import * as BS from 'react-bootstrap';
 import { List } from 'immutable';
 
 import {
-  DateSurveyModel,
   ConfirmSurveyModel,
+  DateSurveyModel,
   LikeSurveyModel,
-  RecSurvey,
+  SurveyModels,
 } from 'src/components/models/survey-card/interface';
 import SurveyCard from 'src/components/models/survey-card';
 import { selectLoginAccount } from 'src/redux/selector';
-import { MemberCardModel } from 'src/components/models/member-card/interface';
+import { UserCardModel } from 'src/components/models/user-card/interface';
 
 export default function Survey() {
   const [key, setKey] = React.useState('allSurvey');
   const loginMember = Redux.useSelector(selectLoginAccount);
 
   const [dummySurveyMyList, dummySurveyTargetToMeList] = React.useMemo<
-    Array<List<RecSurvey>>
+    Array<List<SurveyModels>>
   >(() => {
     const dummySurveyList = List([
       new DateSurveyModel({
@@ -43,7 +43,7 @@ export default function Survey() {
       }),
       new LikeSurveyModel({
         id: 'id3',
-        owner: new MemberCardModel({}),
+        owner: new UserCardModel({}),
         title: 'フレックスタイム制導入に対するアンケート',
         targetMemberList: [loginMember],
         description: '賛成する方はいいね！を押してください。',

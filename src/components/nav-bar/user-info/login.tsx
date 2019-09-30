@@ -2,18 +2,20 @@ import * as React from 'react';
 import * as BS from 'react-bootstrap';
 import * as Redux from 'react-redux';
 import styled from 'styled-components';
+import { useApolloClient } from 'react-apollo-hooks';
 
 import * as WT from 'src/hooks';
-import { MemberCardModel } from 'src/components/models/member-card/interface';
+import { UserCardModel } from 'src/components/models/user-card/interface';
 
 import { login } from 'src/redux/action/auth';
 
-import deplicatedNaruImage from 'src/static/images/deplicated_naru_image.png';
+import { GET_USER } from 'src/graphql/user';
 
 interface Props {
   onClose: () => void;
 }
 export default function Login({ onClose }: Props) {
+  const client = useApolloClient();
   const reduxDispatch = Redux.useDispatch();
   const [id, setId] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -21,33 +23,32 @@ export default function Login({ onClose }: Props) {
   const { addToast } = WT.useToastMsg();
   WT.useAutoFocus(accountRef);
 
-  const onLogin = React.useCallback(() => {
+  const onLogin = React.useCallback(async () => {
     if (!!id && !!password) {
-      const member = new MemberCardModel({
-        id,
-        name: 'NARU',
-        email: 'morolty85@gmail.com',
-        image: deplicatedNaruImage,
-        etc:
-          'ナルの個人情報ですナルの個人情報ですナルの個人情報です\nナルの個人情報です',
+      const { data } = await client.query({
+        query: GET_USER,
+        variables: { id },
       });
-      reduxDispatch(login(member));
-      addToast({
-        body: (
-          <>
-            <BS.Spinner
-              size="sm"
-              animation="grow"
-              variant="success"
-              className="mr-1"
-            />
-            <span>login success</span>
-          </>
-        ),
-      });
-      onClose();
+
+      if (data.user) {
+        reduxDispatch(login(new UserCardModel(data.user)));
+        addToast({
+          body: (
+            <>
+              <BS.Spinner
+                size="sm"
+                animation="grow"
+                variant="success"
+                className="mr-1"
+              />
+              <span>login success</span>
+            </>
+          ),
+        });
+        onClose();
+      }
     }
-  }, [addToast, id, onClose, password, reduxDispatch]);
+  }, [addToast, client, id, onClose, password, reduxDispatch]);
 
   return (
     <BS.Form className="m-0">

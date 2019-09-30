@@ -1,15 +1,15 @@
 import * as React from 'react';
 import * as BS from 'react-bootstrap';
 
+import { Props } from './interface';
+import { StyledUserCard } from './style';
+
 import Thumbnail from '../thumbnail';
 
-import { Props } from './interface';
-import { StyledMemberCard } from './style';
-
-export default function MemberCard({ member }: Props) {
-  const { id, image, name, email, etc } = member;
+export default function UserCard({ user }: Props) {
+  const { id, image, name, email, etc } = user;
   return (
-    <StyledMemberCard key={id}>
+    <StyledUserCard key={id}>
       <BS.Card.Body>
         <BS.Card.Title>
           <Thumbnail
@@ -23,6 +23,6 @@ export default function MemberCard({ member }: Props) {
         <BS.Card.Text>{email}</BS.Card.Text>
         <BS.Card.Text>{etc}</BS.Card.Text>
       </BS.Card.Body>
-    </StyledMemberCard>
+    </StyledUserCard>
   );
 }

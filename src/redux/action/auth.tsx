@@ -1,9 +1,9 @@
 import { createActions } from 'redux-actions';
 
 import * as Types from 'src/redux';
-import { RecMember } from 'src/components/models/member-card/interface';
+import { UserCardModel } from 'src/components/models/user-card/interface';
 
 export const { login, logout } = createActions({
-  [Types.LOGIN]: (payload: RecMember) => payload,
+  [Types.LOGIN]: (payload: UserCardModel) => payload,
   [Types.LOGOUT]: () => null,
 });

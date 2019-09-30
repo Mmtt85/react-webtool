@@ -1,10 +1,7 @@
-import {
-  MemberCardModel,
-  RecMember,
-} from 'src/components/models/member-card/interface';
+import { UserCardModel } from 'src/components/models/user-card/interface';
 
 export default class Session {
-  static login = (account: RecMember): void => {
+  static login = (account: UserCardModel): void => {
     localStorage.setItem('loginAccount', JSON.stringify(account.toJS()));
   };
 
@@ -12,9 +9,9 @@ export default class Session {
     localStorage.clear();
   };
 
-  static getAccount = (): RecMember | null => {
+  static getAccount = (): UserCardModel | null => {
     const loginAccount = localStorage.getItem('loginAccount');
-    return loginAccount ? new MemberCardModel(JSON.parse(loginAccount)) : null;
+    return loginAccount ? new UserCardModel(JSON.parse(loginAccount)) : null;
   };
 
   static isLogin = (): boolean => !!localStorage.getItem('loginAccount');

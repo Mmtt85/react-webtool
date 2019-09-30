@@ -1,18 +1,17 @@
 import { fromJS, List, Record } from 'immutable';
 
 import { Id, SurveyId } from 'src/types';
-import { RecMember } from 'src/components/models/member-card/interface';
+import { UserCardModel } from 'src/components/models/user-card/interface';
 
 export interface Props {
-  survey: RecConfirmSurvey | RecDateSurvey | RecLikeSurvey;
+  survey: SurveyModels;
 }
 
 // types
 export interface BaseSurveyType {
   readonly id: SurveyId;
-  readonly owner: RecMember;
-  targetMemberList: List<RecMember>;
-  image: string;
+  readonly owner: UserCardModel;
+  targetMemberList: List<UserCardModel>;
   title: string;
   description: string;
   readonly createDate: Date;
@@ -20,11 +19,11 @@ export interface BaseSurveyType {
 }
 
 interface SurveyType {
-  member: RecMember;
+  member: UserCardModel;
   description?: string;
 }
 
-export interface DateSurveyType extends BaseSurveyType {
+interface DateSurveyType extends BaseSurveyType {
   dateList: List<{
     id: Id;
     date: Date;
@@ -49,7 +48,6 @@ const baseInit: Record.Factory<BaseSurveyType> = Record({
   id: '',
   owner: null,
   targetMemberList: List(),
-  image: '',
   title: '',
   description: '',
   createDate: new Date(),
@@ -74,16 +72,12 @@ const likeInit: Record.Factory<LikeSurveyType> = Record({
 });
 
 // export types and make record objects
-export interface RecDateSurvey extends Record<DateSurveyType>, DateSurveyType {}
 export class DateSurveyModel extends dateInit implements DateSurveyType {
   constructor(props) {
     super(fromJS(props));
   }
 }
 
-export interface RecConfirmSurvey
-  extends Record<ConfirmSurveyType>,
-    ConfirmSurveyType {}
 export class ConfirmSurveyModel extends confirmInit
   implements ConfirmSurveyType {
   constructor(props) {
@@ -91,11 +85,13 @@ export class ConfirmSurveyModel extends confirmInit
   }
 }
 
-export interface RecLikeSurvey extends Record<LikeSurveyType>, LikeSurveyType {}
 export class LikeSurveyModel extends likeInit implements LikeSurveyType {
   constructor(props) {
     super(fromJS(props));
   }
 }
 
-export type RecSurvey = RecDateSurvey | RecConfirmSurvey | RecLikeSurvey;
+export type SurveyModels =
+  | DateSurveyModel
+  | ConfirmSurveyModel
+  | LikeSurveyModel;

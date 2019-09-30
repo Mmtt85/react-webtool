@@ -1,11 +1,9 @@
 import moment from 'moment';
 import 'moment/locale/ja';
+
 interface StrWithRemainProps {
   date: Date;
   show?: 'date' | 'remain' | 'both';
-}
-interface IsExpiredProps {
-  date: Date;
 }
 
 export default class Moment {
