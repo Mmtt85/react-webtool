@@ -6,6 +6,7 @@
 ・react.js (parcel)
 ・typescript
 ・apollo-graphql
+・immutable
 ・redux / redux-saga
 ・react-bootstrap
 ```
@@ -66,29 +67,32 @@ npm run lint
 npm run test:unit
 ```
 
-
 ## Server
 ## Environment
 ```
-・python (2.7.16)
-・flask
-・flask_restful
+・Python3
+・SQLAlchemy (ORM)
+・graphene_sqlalchemy (apollo-graphql)
+・Flask
+・Flask-GraphQL
+・flask-cors
+・...
 ```
 ### Project setup
-
 ```
 cd server
 pip install virtualenv
 virtualenv venv
-source ./env/Scripts/activate
+source ./venv/Scripts/activate
 (env) pip install -r requirements.txt
 ```
+
 ### Server run
 ```
 flask run
 ```
 
-### deactivate the virtual environment
+### deactivate 
 ```
 deactivate
 ```
