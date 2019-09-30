@@ -1,4 +1,5 @@
-graphene[sqlalchemy]
-SQLAlchemy==1.3.8
-Flask==1.1.1
-Flask_graphql==2.0.0
+SQLAlchemy
+graphene_sqlalchemy
+Flask
+Flask-GraphQL
+flask-cors
