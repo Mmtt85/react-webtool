@@ -13,7 +13,7 @@
     "url": "git+https://github.com/Mmtt85/react-webtool.git"
   },
   "scripts": {
-    "start": "parcel src/index.html -p 8080",
+    "dev": "parcel src/index.html -p 8080",
     "build": "parcel build src/index.html",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
@@ -26,11 +26,11 @@
   },
   "lint-staged": {
     "*.ts": [
-      "npm run lint:fix",
+      "yarn lint:fix",
       "git add --force"
     ],
     "*.tsx": [
-      "npm run lint:fix",
+      "yarn lint:fix",
       "git add --force"
     ]
   },
