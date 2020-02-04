@@ -2,7 +2,7 @@ import { Record } from 'immutable';
 
 import * as Types from 'src/redux';
 
-interface StylesState {
+export interface StylesState {
   root: { blur: boolean; title: string };
 }
 

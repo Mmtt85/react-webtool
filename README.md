@@ -1,6 +1,12 @@
 # web-tool
+## Frontend web server
+> 下記の環境設定完了後、localhost:8080にアクセスし、右上のログインアイコンを押下
+>
+> admin / admin もしくわ user1 / user1 もしくわ user2 / user2でログリン
+>
+> 現在、Pythonサーバーの構築は必要なし
 
-## 開発環境
+### Environment
 ```
 ・node.js (10.16.3)
 ・react.js (parcel)
@@ -10,6 +16,57 @@
 ・redux / redux-saga
 ・react-bootstrap
 ```
+### Project setup
+```
+yarn install
+```
+### Compiles and hot-reloads for development
+```
+yarn dev
+```
+### Compiles and minifies for production
+```
+yarn build
+```
+### Lints and fixes files
+```
+yarn lint
+```
+### Run your unit tests
+```
+yarn test:unit
+```
+
+## Backend Server setup
+### Environment
+```
+・Python3
+・SQLAlchemy (ORM)
+・graphene_sqlalchemy (apollo-graphql)
+・Flask
+・Flask-GraphQL
+・flask-cors
+・...
+```
+### Project setup
+```
+cd server
+pip install virtualenv
+virtualenv venv
+source ./venv/Scripts/activate
+(env) pip install -r requirements.txt
+```
+### Server run
+```
+flask run
+```
+### deactivate 
+```
+deactivate
+```
+
+## 開発環境
+
 ## 説明
 ```
 社内や団体で共通的に必要な各種ツールを
@@ -40,59 +97,4 @@
 　→ 臨時パスワード生成（桁数指定・小文字、大文字、数字、記号含む）
 ・json parser  
 　→ http://json.parser.online.fr
-```
-
-## Project setup
-```
-npm install
-```
-### Compiles and hot-reloads for development
-```
-npm run start
-```
-### Compiles and minifies for production
-```
-npm run build
-```
-### Run your tests
-```
-npm run test
-```
-### Lints and fixes files
-```
-npm run lint
-```
-### Run your unit tests
-```
-npm run test:unit
-```
-
-## Server
-## Environment
-```
-・Python3
-・SQLAlchemy (ORM)
-・graphene_sqlalchemy (apollo-graphql)
-・Flask
-・Flask-GraphQL
-・flask-cors
-・...
-```
-### Project setup
-```
-cd server
-pip install virtualenv
-virtualenv venv
-source ./venv/Scripts/activate
-(env) pip install -r requirements.txt
-```
-
-### Server run
-```
-flask run
-```
-
-### deactivate 
-```
-deactivate
 ```

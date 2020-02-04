@@ -1,20 +1,22 @@
 import * as React from 'react';
 import * as BS from 'react-bootstrap';
 import * as Redux from 'react-redux';
-import * as Apollo from 'react-apollo-hooks';
+// import * as Apollo from 'react-apollo-hooks';
 import styled from 'styled-components';
 
 import * as WebTool from 'src/hooks';
 import { login } from 'src/redux/action/auth';
-import { GET_USER } from 'src/graphql/user';
+// import { GET_USER } from 'src/graphql/user';
 
 import { UserCardModel } from 'src/components/models/user-card/interface';
+
+import { dummyUsers } from 'src/dummy-data/users';
 
 interface Props {
   onClose: () => void;
 }
 export default function Login({ onClose }: Props) {
-  const client = Apollo.useApolloClient();
+  // const client = Apollo.useApolloClient();
   const reduxDispatch = Redux.useDispatch();
   const [id, setId] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -22,15 +24,20 @@ export default function Login({ onClose }: Props) {
   const { addToast } = WebTool.useToastMsg();
   WebTool.useAutoFocus(accountRef);
 
+  const authCheck = (id: string, password: string) =>
+    dummyUsers.find(user => user.id === id && user.password === password);
+  // const { data } = await client.query({
+  //   query: GET_USER,
+  //   variables: { id },
+  // });
+  // return data.user;
+
   const onLogin = React.useCallback(async () => {
     if (!!id && !!password) {
-      const { data } = await client.query({
-        query: GET_USER,
-        variables: { id },
-      });
+      const user = authCheck(id, password);
 
-      if (data.user) {
-        reduxDispatch(login(new UserCardModel(data.user)));
+      if (user) {
+        reduxDispatch(login(new UserCardModel(user)));
         addToast({
           body: (
             <>
@@ -47,7 +54,7 @@ export default function Login({ onClose }: Props) {
         onClose();
       }
     }
-  }, [addToast, client, id, onClose, password, reduxDispatch]);
+  }, [addToast, id, onClose, password, reduxDispatch]);
 
   return (
     <BS.Form className="m-0">
@@ -75,7 +82,7 @@ export default function Login({ onClose }: Props) {
       <StyledButtonsWrapper>
         <BS.Badge variant="danger" className="pl-1 pr-2">
           <BS.Spinner size="sm" animation="grow" />
-          input any account/password
+          input 「admin/admin」 「user1/user1」 「user2/user2」
         </BS.Badge>
         <BS.Button
           className="ml-2"

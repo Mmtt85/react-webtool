@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import emptyPhoto from 'src/static/images/empty-photo.jpg';
+import NoImage from 'src/static/images/deprecated_naru_image.png';
 
 import { Props } from './interface';
 import { StyledThumbnail } from './style';
@@ -24,7 +24,7 @@ export default function Thumbnail({
   } = imageProps;
   return (
     <StyledThumbnail
-      src={src || emptyPhoto}
+      src={src || NoImage}
       size={size}
       fluid={fluid}
       thumbnail={thumbnail}
