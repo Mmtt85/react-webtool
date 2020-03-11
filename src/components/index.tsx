@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as Redux from 'react-redux';
 import Favicon from 'react-favicon';
-import styled from 'styled-components';
 
 import Session from 'src/utils/session';
 import { ToastMsgProvider } from 'src/providers/toast-msg';
