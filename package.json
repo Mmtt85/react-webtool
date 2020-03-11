@@ -13,6 +13,7 @@
     "url": "git+https://github.com/Mmtt85/react-webtool.git"
   },
   "scripts": {
+    "start": "parcel serve src/index.html -p 8080",
     "dev": "parcel src/index.html -p 8080",
     "build": "parcel build src/index.html",
     "test": "echo \"Error: no test specified\" && exit 1",

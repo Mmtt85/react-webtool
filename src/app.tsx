@@ -9,7 +9,7 @@ import apolloClient from 'src/configurations/apollo';
 import reduxStore from 'src/configurations/redux-store';
 import history from 'src/configurations/history';
 
-import Index from 'src/components';
+import Root from 'src/components';
 
 import './app.scss';
 
@@ -19,7 +19,7 @@ export default function App() {
       <Router history={history}>
         <ApolloProvider client={apolloClient}>
           <ApolloHooksProvider client={apolloClient}>
-            <Index />
+            <Root />
           </ApolloHooksProvider>
         </ApolloProvider>
       </Router>

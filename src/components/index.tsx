@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as Redux from 'react-redux';
 import Favicon from 'react-favicon';
+import styled from 'styled-components';
 
 import Session from 'src/utils/session';
 import { ToastMsgProvider } from 'src/providers/toast-msg';
@@ -11,7 +12,12 @@ import NavBar from 'src/components/nav-bar';
 import Body from 'src/components/body';
 import ToastMsg from 'src/components/models/toast-msg';
 
-export default function Index() {
+const StyledRoot = styled.div`
+  height: 100%;
+  filter: ${({ isBlur }) => (isBlur ? `blur(2px)` : '')}};
+`;
+
+const Root = () => {
   const reduxDispatch = Redux.useDispatch();
   const { blur, title } = Redux.useSelector(selectRoot);
 
@@ -35,9 +41,6 @@ export default function Index() {
       </ToastMsgProvider>
     </StyledRoot>
   );
-}
+};
 
-const StyledRoot = styled.div`
-  height: 100%;
-  filter: ${({ isBlur }) => (isBlur ? `blur(2px)` : '')}};
-`;
+export default Root;

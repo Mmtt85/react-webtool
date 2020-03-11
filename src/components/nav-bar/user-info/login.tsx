@@ -1,12 +1,10 @@
 import * as React from 'react';
 import * as BS from 'react-bootstrap';
 import * as Redux from 'react-redux';
-import * as Apollo from 'react-apollo-hooks';
 import styled from 'styled-components';
 
 import * as WebTool from 'src/hooks';
 import { login } from 'src/redux/action/auth';
-import { GET_USER } from 'src/graphql/user';
 
 import { UserCardModel } from 'src/components/models/user-card/interface';
 
@@ -17,7 +15,6 @@ interface Props {
 }
 
 const Login = ({ onClose }: Props) => {
-  const client = Apollo.useApolloClient();
   const reduxDispatch = Redux.useDispatch();
   const [id, setId] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -31,12 +28,6 @@ const Login = ({ onClose }: Props) => {
       dummyUsers.find(user => user.id === id && user.password === password),
     [],
   );
-  //
-  // const { data } = await client.query({
-  //   query: GET_USER,
-  //   variables: { id },
-  // });
-  // return data.user;
 
   const onLogin = React.useCallback(async () => {
     if (!!id && !!password) {
