@@ -5,7 +5,7 @@ import NoImage from 'src/static/images/deprecated_naru_image.png';
 import { Props } from './interface';
 import { StyledThumbnail } from './style';
 
-export default function Thumbnail({
+const Thumbnail = ({
   src,
   size,
   title,
@@ -15,7 +15,7 @@ export default function Thumbnail({
     roundedCircle: false,
     rounded: false,
   },
-}: Props) {
+}: Props) => {
   const {
     fluid = true,
     thumbnail = true,
@@ -33,4 +33,6 @@ export default function Thumbnail({
       title={title}
     />
   );
-}
+};
+
+export default Thumbnail;

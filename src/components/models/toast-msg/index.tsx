@@ -6,7 +6,7 @@ import * as WebTool from 'src/hooks';
 
 import { StyledToastMsg } from './style';
 
-export default function ToastMsg() {
+const ToastMsg = () => {
   const { toastList, removeToast } = WebTool.useToastMsg();
   const toastIdList = React.useMemo<List<number>>(
     () => toastList.map(toast => toast.id),
@@ -33,4 +33,6 @@ export default function ToastMsg() {
       ))}
     </StyledToastMsg>
   );
-}
+};
+
+export default ToastMsg;

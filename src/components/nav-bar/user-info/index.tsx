@@ -17,7 +17,7 @@ import Modal from 'src/components/common/modal';
 import UserCard from 'src/components/models/user-card';
 import Login from './login';
 
-export default function Index() {
+const UserInfo = () => {
   const reduxDispatch = Redux.useDispatch();
   const loginAccount = Redux.useSelector(selectLoginAccount);
   const { addToast } = WebTool.useToastMsg();
@@ -88,4 +88,6 @@ export default function Index() {
       )}
     </BS.NavItem>
   );
-}
+};
+
+export default UserInfo;

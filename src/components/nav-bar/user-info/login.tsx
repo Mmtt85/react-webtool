@@ -1,12 +1,12 @@
 import * as React from 'react';
 import * as BS from 'react-bootstrap';
 import * as Redux from 'react-redux';
-// import * as Apollo from 'react-apollo-hooks';
+import * as Apollo from 'react-apollo-hooks';
 import styled from 'styled-components';
 
 import * as WebTool from 'src/hooks';
 import { login } from 'src/redux/action/auth';
-// import { GET_USER } from 'src/graphql/user';
+import { GET_USER } from 'src/graphql/user';
 
 import { UserCardModel } from 'src/components/models/user-card/interface';
 
@@ -15,17 +15,23 @@ import { dummyUsers } from 'src/dummy-data/users';
 interface Props {
   onClose: () => void;
 }
-export default function Login({ onClose }: Props) {
-  // const client = Apollo.useApolloClient();
+
+const Login = ({ onClose }: Props) => {
+  const client = Apollo.useApolloClient();
   const reduxDispatch = Redux.useDispatch();
   const [id, setId] = React.useState('');
   const [password, setPassword] = React.useState('');
   const accountRef = React.useRef();
   const { addToast } = WebTool.useToastMsg();
+
   WebTool.useAutoFocus(accountRef);
 
-  const authCheck = (id: string, password: string) =>
-    dummyUsers.find(user => user.id === id && user.password === password);
+  const authCheck = React.useCallback(
+    (id: string, password: string) =>
+      dummyUsers.find(user => user.id === id && user.password === password),
+    [],
+  );
+  //
   // const { data } = await client.query({
   //   query: GET_USER,
   //   variables: { id },
@@ -54,7 +60,7 @@ export default function Login({ onClose }: Props) {
         onClose();
       }
     }
-  }, [addToast, id, onClose, password, reduxDispatch]);
+  }, [addToast, authCheck, id, onClose, password, reduxDispatch]);
 
   return (
     <BS.Form className="m-0">
@@ -103,8 +109,10 @@ export default function Login({ onClose }: Props) {
       </StyledButtonsWrapper>
     </BS.Form>
   );
-}
+};
 
 const StyledButtonsWrapper = styled.div`
   text-align: right;
 `;
+
+export default Login;
