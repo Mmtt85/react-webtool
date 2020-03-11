@@ -12,7 +12,7 @@ interface UserType {
   name?: string;
   image?: string;
   email?: string;
-  etc?: string;
+  etc?: Array<string>;
 }
 
 // init records
@@ -21,12 +21,12 @@ const init: Record.Factory<UserType> = Record({
   name: '',
   image: '',
   email: '',
-  etc: '',
+  etc: [],
 });
 
 // export types and make record objects
 export class UserCardModel extends init implements UserType {
-  constructor(props) {
+  constructor(props: UserType) {
     super(fromJS(props));
   }
 }

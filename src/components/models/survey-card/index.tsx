@@ -20,7 +20,7 @@ import {
 } from './interface';
 import { StyledSurveyCard } from './style';
 
-export default function SurveyCard({ survey }: Props) {
+const SurveyCard = ({ survey }: Props) => {
   const { id, owner, title, description, expireDate } = survey;
 
   const isExpired = React.useMemo<string>(
@@ -60,4 +60,6 @@ export default function SurveyCard({ survey }: Props) {
       </BS.Card.Footer>
     </StyledSurveyCard>
   );
-}
+};
+
+export default SurveyCard;
