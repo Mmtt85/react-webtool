@@ -5,7 +5,7 @@ import _ from 'lodash';
 import history from 'src/configurations/history';
 import { rootTitle } from 'src/redux/action/styles';
 
-export default function useHistory() {
+const useHistory = () => {
   const reduxDispatch = Redux.useDispatch();
   const gotoPage = React.useCallback(
     (path: string, title?: string) => {
@@ -16,4 +16,6 @@ export default function useHistory() {
   );
 
   return { gotoPage };
-}
+};
+
+export default useHistory;

@@ -9,12 +9,12 @@ import { CareerModel } from 'src/components/models/career/interface';
 
 const userNaru = new UserCardModel({
   id: '0',
-  name: '成炳鎬（ソンビョンホ、Seong Byeongho）',
+  name: '成 炳鎬（ソン ビョンホ、Seong Byeongho）',
   email: 'nzkonaru@gmail.com',
   image: Naru,
   etc: [
     'フルスタック開発者。',
-    'プログラミング20年目、開発の仕事は7年目.',
+    'プログラミング20年目、開発の仕事は7年目。',
     'In Japan, Tokyo.',
   ],
 });
